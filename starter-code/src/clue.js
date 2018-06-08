@@ -60,6 +60,7 @@ image:        "https://metrouk2.files.wordpress.com/2016/07/colonel-mustard.jpg"
 occupation:   "Retired Football player"
 }
 
+
 // Weapons
 
 var rope = {
@@ -128,22 +129,48 @@ var weaponsArray = [rope, knife, candlestick, dumbbell, poison, axe, bat, trophy
 
 
 //Iteracion 2
-function randomSelector(arr) {
-  var i = arr.length;
-  var a = Math.floor(Math.random() * i);
-  return arr[a]
+// function randomSelector(arr) {
+//   var i = arr.length;
+//   var a = Math.floor(Math.random() * i);
+//   return arr[a]
+// }
+
+let randomSelector = arr => {
+  let cardSelect = Math.floor(Math.random() * arr.length);
+  return arr[cardSelect];
+};
+
+let misteryEnvelope = []
+
+
+// function pickMistery(){
+//   var misteryEnvelope = [];
+//   a = randomSelector(charactersArray);
+//   b = randomSelector(roomsArray);
+//   c = randomSelector(weaponsArray);
+//   misteryEnvelope.push(a,b,c);
+//   return misteryEnvelope;
+// }
+
+
+let pickMistery = (arr1, arr2, arr3) => {
+
+  let card1 = randomSelector(arr1);
+  let card2 = randomSelector(arr2);
+  let card3 = randomSelector(arr3);
+
+  misteryEnvelope.push(card1, card2, card3);
+
+  return misteryEnvelope
+
+};
+
+pickMistery(characters, weapons, rooms)
+console.log(pickMistery)
+
+let revealMistery = (arr) => {
+  return arr[0].first_name + arr[0].last_name + " killed Mr.Boddy using the " + arr[1].name + "in the " + arr[2].name
 }
 
-
-
-
-function pickMistery(){
-  var misteryEnvelope = [];
-  a = randomSelector(charactersArray);
-  b = randomSelector(roomsArray);
-  c = randomSelector(weaponsArray);
-  misteryEnvelope.push(a,b,c);
-  return misteryEnvelope;
-}
-
+revealMistery(misteryEnvelope)
 
